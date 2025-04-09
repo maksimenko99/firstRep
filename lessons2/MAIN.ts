@@ -16,7 +16,7 @@ cat2.meow(5);
 cat1.getInfo();
 cat2.countCat();
 dog1.countDog();
-miska.addEda(75);
+miska.addEda(85);
 miska.addEda(15);
 cat1.eat(miska);
 cat2.eat(miska);
