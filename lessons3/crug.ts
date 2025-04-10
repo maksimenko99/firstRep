@@ -1,4 +1,4 @@
-import { Color } from "./colors";
+import { Color } from "./color";
 import { Figuri } from "./figuri";
 
 export class Crug implements Figuri{

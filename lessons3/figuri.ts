@@ -1,4 +1,4 @@
-import { Color } from "./colors"
+import { Color } from "./color"
 
 export interface Figuri{
  ploshad(): number

@@ -1,4 +1,4 @@
-import { Color } from "./colors";
+import { Color } from "./color";
 import { Crug } from "./crug";
 import { Kvadrat } from "./kvadrat";
 
