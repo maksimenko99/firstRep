@@ -60,8 +60,8 @@ export class HomePage {
         await this.page.locator(this.inputs).fill("(29)777-77-77")
     }
 
-    async fillAmount(){
-        await this.page.locator('input[placeholder="Сумма"]').first().fill("100")
+    async fillAmount(amount: string){
+        await this.page.locator('input[placeholder="Сумма"]').first().fill(amount)
     }
 
     async clickContinue(){

@@ -25,7 +25,7 @@ test('check the operation of the button - continue', async({ page }) =>{
   await homePage.goTo()
   await homePage.clickCookie()
   await homePage.scrollAndFillPhoneNumber()
-  await homePage.fillAmount()
+  await homePage.fillAmount('100')
   await homePage.clickContinue()
   const frame = page.frameLocator('iframe.bepaid-iframe')
   await expect(frame.locator('section.payment-page')).toBeVisible()
