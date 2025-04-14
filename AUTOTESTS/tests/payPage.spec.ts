@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { PayPage } from '../pages/PayPage'
 import { HomePage } from '../pages/HomePage'
 
-test.only('Check pay page modal inputs', async ({ page }) => {
+test('Check pay page modal inputs', async ({ page }) => {
     let payPage: PayPage = new PayPage(page)
     const amount: string = '100'
     await payPage.openPayPage(amount)
