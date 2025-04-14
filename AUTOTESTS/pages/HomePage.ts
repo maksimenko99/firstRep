@@ -3,21 +3,6 @@ import { expect, Locator, Page } from "@playwright/test"
 export class HomePage {
     page: Page
 
-    // page.goto('https://www.mts.by/')
-    // expect(page.locator('section.pay h2')).toHaveText(/Онлайн пополнение без комиссии/)
-    // page.locator('div.pay__partners ul').scrollIntoViewIfNeeded()
-    // expect(page.locator('div.pay__partners ul')).toBeVisible()
-    // page.locator('button#cookie-agree').click()
-    // page.locator('section.pay a').scrollIntoViewIfNeeded()
-    // page.locator('section.pay a').click()
-    // expect(page.locator('div.container-fluid h3').first()).toHaveText(/Оплата банковской картой/)
-    // page.locator('button#cookie-agree').click()
-    // page.locator('input[placeholder="Номер телефона"]').scrollIntoViewIfNeeded()
-    // page.locator('input[placeholder="Номер телефона"]').fill("(29)777-77-77")
-    // page.locator('input[placeholder="Сумма"]').first().fill("100")
-    // page.locator('button.button__default[type=submit]').first().click()
-    // const frame = page.frameLocator('iframe.bepaid-iframe')
-    // expect(frame.locator('section.payment-page')).toBeVisible()
     constructor(page: Page){
         this.page = page
 
