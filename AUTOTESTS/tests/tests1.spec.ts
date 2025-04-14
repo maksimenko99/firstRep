@@ -1,55 +1,55 @@
 import { test, expect } from '@playwright/test'
-import { HomePage, ProductType } from '../pages/HomePage';
+import { HomePage, PayFormProductType } from '../pages/HomePage';
 
-test('verifying the block name', async ({ page }) => {
+test('Check pay form block name', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
   await homePage.goTo()
   await homePage.expectOnlineDepositBlockToHaveText()
 });
 
-test('Checking for logos', async ({ page }) => {
+test('Check pay form logos', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
     await homePage.goTo()
     await homePage.expectLogosToBeVisible()
 
 })
-test('check the link - learn more about the service', async({ page }) => {
+test('Check pay form learn more link', async({ page }) => {
   let homePage: HomePage = new HomePage(page)
     await homePage.goTo()
     await homePage.clickCookie()
     await homePage.scrollAndClickMoreInfo()
     await homePage.expectPayBankCardToHaveText()
 })
-test('check the operation of the button - continue', async({ page }) =>{
+test('Check fulfilling pay form fields', async({ page }) =>{
   let homePage: HomePage = new HomePage(page)
   await homePage.goTo()
   await homePage.clickCookie()
-  await homePage.scrollAndFillPhoneNumber()
-  await homePage.fillAmount('100')
-  await homePage.clickContinue()
+  await homePage.fillPayFormPhoneNumber()
+  await homePage.fillPayFormAmount('100')
+  await homePage.clickPayFormContinue()
   const frame = page.frameLocator('iframe.bepaid-iframe')
   await expect(frame.locator('section.payment-page')).toBeVisible()
 })
 
-test('the field for the phone number', async ({ page }) => {
+test('Check pay form product type widgets inputs', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
   await homePage.goTo()
   await homePage.clickCookie()
   await homePage.scrollIntoViewIfNeeded()
   await homePage.expectPayFormDropToHaveText('Услуги связи')
-  await homePage.expectNumbersPhoneToBeVisible()
-  await homePage.expectAmountToBeVisible(ProductType.connection)
-  await homePage.expectMailToBeVisible()
+  await homePage.expectPayFormPhoneNumberToBeVisible()
+  await homePage.expectPayFormAmountPlaceholderToBeVisible(PayFormProductType.connection)
+  await homePage.expectPayFormEmailToBeVisible()
   await homePage.selectPayFormOption('Домашний интернет')
   await homePage.expectPayFormDropToHaveText('Домашний интернет')
-  await homePage.expectNumbersAbonementToBeVisible()
-  await homePage.expectAmountToBeVisible(ProductType.internet)
-  await homePage.expectInternetMailToBeVisible()
+  await homePage.expectPayFormAbNumberToBeVisible()
+  await homePage.expectPayFormAmountPlaceholderToBeVisible(PayFormProductType.internet)
+  await homePage.expectPayFormInternetEmailToBeVisible()
   await homePage.selectPayFormOption('Рассрочка')
   await homePage.expectPayFormDropToHaveText('Рассрочка')
-  await homePage.expectAccountNumberToBeVisible()
-  await homePage.expectAmountToBeVisible(ProductType.installment)
-  await homePage.expectCreditEmailToBeVisible()
+  await homePage.expectPayFormAccountNumberToBeVisible()
+  await homePage.expectPayFormAmountPlaceholderToBeVisible(PayFormProductType.installment)
+  await homePage.expectPayFormCreditEmailToBeVisible()
 
 })
 

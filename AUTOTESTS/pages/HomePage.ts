@@ -55,16 +55,15 @@ export class HomePage {
     }
 
     inputs: string = 'input[placeholder="Номер телефона"]'
-    async scrollAndFillPhoneNumber(){
-        await this.page.locator(this.inputs).scrollIntoViewIfNeeded()
+    async fillPayFormPhoneNumber(){
         await this.page.locator(this.inputs).fill("(29)777-77-77")
     }
 
-    async fillAmount(amount: string){
+    async fillPayFormAmount(amount: string){
         await this.page.locator('input[placeholder="Сумма"]').first().fill(amount)
     }
 
-    async clickContinue(){
+    async clickPayFormContinue(){
         await this.page.locator('button.button__default[type=submit]').first().click()
     }
 
@@ -78,19 +77,19 @@ export class HomePage {
         await this.page.getByRole('paragraph').filter({ hasText: text }).click()
     }
 
-    async expectNumbersPhoneToBeVisible(){
+    async expectPayFormPhoneNumberToBeVisible(){
         await expect(this.page.locator('input#connection-phone')).toHaveAttribute('placeholder', 'Номер телефона')
     }
 
-    async expectAmountToBeVisible(productType: ProductType){
+    async expectPayFormAmountPlaceholderToBeVisible(productType: PayFormProductType){
         let formLocator: Locator
-        if (productType === ProductType.connection) {
+        if (productType === PayFormProductType.connection) {
             formLocator = this.page.locator('input#connection-sum')
-        } else if (productType === ProductType.internet) {
+        } else if (productType === PayFormProductType.internet) {
             formLocator = this.page.locator('input#internet-sum')
-        } else if (productType === ProductType.installment) {
+        } else if (productType === PayFormProductType.installment) {
             formLocator = this.page.locator('input#instalment-sum')
-        } else if (productType === ProductType.arrears) {
+        } else if (productType === PayFormProductType.arrears) {
             formLocator = this.page.locator('input#arrears-sum')
         } else {
             throw Error
@@ -98,28 +97,28 @@ export class HomePage {
         await expect(formLocator).toHaveAttribute('placeholder', 'Сумма')
     }
 
-    async expectMailToBeVisible(){
+    async expectPayFormEmailToBeVisible(){
         await expect(this.page.locator('input#connection-email')).toHaveAttribute('placeholder', 'E-mail для отправки чека')
     }
 
-    async expectNumbersAbonementToBeVisible(){
+    async expectPayFormAbNumberToBeVisible(){
         await expect(this.page.locator('input#internet-phone')).toHaveAttribute('placeholder', 'Номер абонента')
     }
 
-    async expectInternetMailToBeVisible(){
+    async expectPayFormInternetEmailToBeVisible(){
         await expect(this.page.locator('input#internet-email')).toHaveAttribute('placeholder', 'E-mail для отправки чека')
     }
 
-    async expectAccountNumberToBeVisible(){
+    async expectPayFormAccountNumberToBeVisible(){
         await expect(this.page.locator('input#score-instalment')).toHaveAttribute('placeholder', 'Номер счета на 44')
     }
 
-    async expectCreditEmailToBeVisible(){
+    async expectPayFormCreditEmailToBeVisible(){
         await expect(this.page.locator('input#instalment-email')).toHaveAttribute('placeholder', 'E-mail для отправки чека')
     }
 }
 
-export enum ProductType {
+export enum PayFormProductType {
     connection = 'Услуги связи',
     installment = 'Рассрочка',
     internet = 'Домашний интернет',
