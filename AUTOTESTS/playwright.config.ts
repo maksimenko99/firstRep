@@ -10,11 +10,16 @@ export default defineConfig({
 
   workers: process.env.CI ? 1 : 1,
 
-  reporter: 'html',
+  reporter: 
+  [
+    ['list'],
+    ['html', { open: 'never'}]
+  ],
+ 
 
   use: {
-
-    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    trace: 'retain-on-failure',
   },
   projects: [
     {
