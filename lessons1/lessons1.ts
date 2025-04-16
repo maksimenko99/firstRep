@@ -1,4 +1,5 @@
-function words() {
+
+export function words() {
    const a: string = 'Banana';
    const b: string = 'Orange';
    const c: string = 'Apple';
@@ -6,7 +7,7 @@ function words() {
 }
 // words()
 
-function chechSumSign() {
+export function chechSumSign() {
     let a: number = 5
     let b: number = -10
     if(a+b>0){
@@ -17,7 +18,7 @@ function chechSumSign() {
 }
 // chechSumSign()
 
-function printColor(){
+export function printColor(){
     let a: number = -50
     if(a<0){
         console.log('red')
@@ -29,28 +30,32 @@ function printColor(){
 }
 // printColor()
 
-function compareNumbers(){
-    const a: number = 6
+export function compareNumbers(){
+    const a: number = 5
     const b: number = 6
     if(a>b){
-        console.log('error')
+        // console.log('error')
+        return true
     } else {
-        console.log('sexes')
+        // console.log('success')
+        return false
     }
 }
 // compareNumbers()
 
-function summury(a:number, b: number){
+export function summury(a:number, b: number){
     let sum: number = a+b
     if(10<=sum && sum<=20){
-        console.log('true')
+        // console.log('true')
+        return true
     } else {
-        console.log('false')
+        // console.log('false')
+        return false
     }
 }
-// summury(11,10)
+summury(10, 11)
 
-function isPositive(a: number) {
+export function isPositive(a: number) {
     if(a>=0){
         console.log('positive')
     } else {
@@ -59,7 +64,7 @@ function isPositive(a: number) {
   }
 //   isPositive(0)
 
-function isNegative(a: number) {
+export function isNegative(a: number) {
     if(a>=0){
         console.log(a>0)
     } else {
@@ -68,14 +73,14 @@ function isNegative(a: number) {
   }
 // isNegative(0)
 
-function several(a: number, b: string){
+export function several(a: number, b: string){
     for(let i=1; i<=a; i++){
         console.log(b)
     }
 }
 // several(5, 'AsyA')
 
-function visokosGod(god: number){
+export function visokosGod(god: number){
     if(god % 4 == 0 && god % 400 == 0){
         console.log("god - visokos")
     } else if(god % 100 == 0){
@@ -86,7 +91,7 @@ function visokosGod(god: number){
 }
 // visokosGod(500)
 
-function massive(){
+export function massive(){
     const a: Array<number> = [0,1,1,0,1,0,0]
     for(let i = 0; i<a.length; i++){
         if(a[i] == 0){
@@ -99,7 +104,7 @@ function massive(){
 }
 // massive()
 
-function emptyMassive(){
+export function emptyMassive(){
     const a: Array<number> = [100]
     for(let i = 0; i<100; i++){
         a.push(i+1)
@@ -108,7 +113,7 @@ function emptyMassive(){
 }
 // emptyMassive()
 
-function cyrcleMassive(){
+export function cyrcleMassive(){
     const a: Array<number> = [1,5,3,2,11,4,5,2,4,8,9,1]
     for(let i = 0; i<a.length; i++){
         if(a[i]<6)
@@ -118,7 +123,7 @@ function cyrcleMassive(){
 }
 // cyrcleMassive()
 
-function doubleMassive(){
+export function doubleMassive(){
     const a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
         for (let i = 0; i < a.length; i++)
             for (let j = 0; j < a.length; j++) {
