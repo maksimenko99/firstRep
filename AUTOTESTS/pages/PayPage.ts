@@ -14,8 +14,6 @@ export class PayPage {
 
     async openPayPage(amount: string){
         let homePage: HomePage = new HomePage(this.page)
-        await homePage.goTo()
-        await homePage.clickCookie()
         await homePage.fillPayFormPhoneNumber()
         await homePage.fillPayFormAmount(amount)
         await homePage.clickPayFormContinue()

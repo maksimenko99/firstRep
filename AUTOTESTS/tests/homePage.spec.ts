@@ -1,29 +1,29 @@
 import { test, expect } from '@playwright/test'
 import { HomePage, PayFormProductType } from '../pages/HomePage';
 
+test.beforeEach(async ({ page, context }) => {
+  let homePage: HomePage = new HomePage(page)
+  await context.addCookies([{name: 'BITRIX_SM_COOKIES_AGREEMENT', value: 'yes', path: '/', domain: 'www.mts.by'}])
+  await homePage.goTo()
+})
+
 test('Check pay form block name', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
-  await homePage.goTo()
   await homePage.expectOnlineDepositBlockToHaveText()
 });
 
 test('Check pay form logos', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
-    await homePage.goTo()
     await homePage.expectLogosToBeVisible()
 
 })
 test('Check pay form learn more link', async({ page }) => {
   let homePage: HomePage = new HomePage(page)
-    await homePage.goTo()
-    await homePage.clickCookie()
     await homePage.scrollAndClickMoreInfo()
     await homePage.expectPayBankCardToHaveText()
 })
 test('Check fulfilling pay form fields', async({ page }) =>{
   let homePage: HomePage = new HomePage(page)
-  await homePage.goTo()
-  await homePage.clickCookie()
   await homePage.fillPayFormPhoneNumber()
   await homePage.fillPayFormAmount('100')
   await homePage.clickPayFormContinue()
@@ -33,8 +33,6 @@ test('Check fulfilling pay form fields', async({ page }) =>{
 
 test('Check pay form product type widgets inputs', async ({ page }) => {
   let homePage: HomePage = new HomePage(page)
-  await homePage.goTo()
-  await homePage.clickCookie()
   await homePage.scrollIntoViewIfNeeded()
   await homePage.expectPayFormDropToHaveText('Услуги связи')
   await homePage.expectPayFormPhoneNumberToBeVisible()
@@ -50,7 +48,6 @@ test('Check pay form product type widgets inputs', async ({ page }) => {
   await homePage.expectPayFormAccountNumberToBeVisible()
   await homePage.expectPayFormAmountPlaceholderToBeVisible(PayFormProductType.installment)
   await homePage.expectPayFormCreditEmailToBeVisible()
-
 })
 
 
