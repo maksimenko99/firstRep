@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.only('Check user not found error', async ({ request }) => {
+test('Check user not found error', async ({ request }) => {
   const newIssue = await request.post('https://demoqa.com/Account/v1/Authorized', {
     data: {
       userName: 'maksimenko',
@@ -12,7 +12,7 @@ test.only('Check user not found error', async ({ request }) => {
   expect(newIssue.status()).toBe(404)
 })
 
-test.only('Check amount of books in v1/Books', async ({ request }) => {
+test('Check amount of books in v1/Books', async ({ request }) => {
   const newIssue = await request.get('https://demoqa.com/BookStore/v1/Books')
   expect(newIssue.body()).toBeDefined()
   const books = JSON.parse((await newIssue.body()).toString())
