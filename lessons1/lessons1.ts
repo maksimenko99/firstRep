@@ -7,8 +7,8 @@ export function words() {
 }
 
 export function chechSumSign() {
-    let a: number = 5
-    let b: number = -10
+    let a: number = 10
+    let b: number = -20
     if(a+b>0){
         return a+b
     } else {
