@@ -28,7 +28,7 @@ export class PayPage {
     }
 
     async expectCardInputPlaceholdersAreVisible() {
-        const placeholders = ['Номер карты', 'Срок действия', 'CVC', 'Имя держателя (как на карте)']
+        const placeholders = ['Номер карты', 'Срок действия', 'CVC', 'Имя и фамилия на карте']
         for (let i = 0; i < placeholders.length; i++) {
             await expect(this.getFrame().locator('label').nth(i)).toHaveText(placeholders[i])
         }
